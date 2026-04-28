@@ -122,7 +122,7 @@ aerocode-spa/
 
 | Arquivo | Descrição |
 |---|---|
-| `Aerocode.pdf` | Relatório PDF: wireframes, requisitos, público-alvo, fluxo de navegação (8 seções) |
+| `Aerocode.pdf` | Relatório PDF: wireframes, requisitos, público-alvo, fluxo de navegação |
 | `src/` | Código-fonte da SPA React |
 | `dist/` | Build de produção gerado |
 
