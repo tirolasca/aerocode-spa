@@ -570,7 +570,7 @@ export function PaginaConfiguracoes() {
             <div className="cartao-corpo">
               {[
                 ['Versão','1.0.0 (Protótipo)'],
-                ['Framework','React 18 + Vite 6'],
+                ['Framework','React 19 + Vite 8'],
                 ['Ambiente','Desenvolvimento'],
                 ['Última atualização','Abril / 2026'],
                 ['Plataformas suportadas','Windows 10+, Ubuntu 24.04+'],
