@@ -109,7 +109,7 @@ aerocode-spa/
 
 | Tecnologia | Versão | Função |
 |---|---|---|
-| [JavaScript (ES2022+)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) | ES2022+ | Linguagem base de todas as páginas e componentes (arquivos `.jsx`) |
+| [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) | ES2022+ | Linguagem base de todas as páginas e componentes (arquivos `.jsx`) |
 | [JSX](https://react.dev/learn/writing-markup-with-jsx) | — | Extensão de sintaxe que combina JavaScript e HTML nos componentes React |
 | [React](https://react.dev/) | 19 | Framework principal de UI |
 | [Vite](https://vitejs.dev/) | 8 | Bundler + servidor de desenvolvimento |
