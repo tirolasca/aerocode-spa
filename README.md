@@ -2,10 +2,10 @@
 
 > **Protótipo de GUI SPA Navegável**
 
-![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
-![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite)
+![React](https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-9135FF.svg?style=for-the-badge&logo=Vite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Recharts](https://img.shields.io/badge/Recharts-2-22D3EE?style=flat-square)
+![Recharts](https://img.shields.io/badge/Recharts-22D3EE?style=flat-square)
 
 ---
 
