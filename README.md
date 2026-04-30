@@ -113,7 +113,7 @@ aerocode-spa/
 | [JSX](https://react.dev/learn/writing-markup-with-jsx) | — | Extensão de sintaxe que combina JavaScript e HTML nos componentes React |
 | [React](https://react.dev/) | 19 | Framework principal de UI |
 | [Vite](https://vitejs.dev/) | 8 | Bundler + servidor de desenvolvimento |
-| [Recharts](https://recharts.org/) | 2 | Gráficos e visualizações |
+| [Recharts](https://recharts.org/) | 3 | Gráficos e visualizações |
 
 
 ---
