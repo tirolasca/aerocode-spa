@@ -1,12 +1,19 @@
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { producaoMensal, ordens } from '../dados/dadosMock';
+import { producaoMensal, ordens, StatusEtapa, dadosQualidade } from '../dados/dadosMock';
+
+function statusOrdem(ordem) {
+  const etapas = ordem.etapas || [];
+  if (etapas.length === 0) return 'Planejado';
+  if (etapas.every(e => e.status === StatusEtapa.CONCLUIDA)) return 'Concluído';
+  if (etapas.some(e => e.status === StatusEtapa.ANDAMENTO)) return 'Em Produção';
+  return 'Planejado';
+}
 
 function BadgeStatus({ status }) {
   const mapa = {
     'Em Produção': 'badge badge-info',
-    'Concluído': 'badge badge-sucesso',
-    'Planejado': 'badge badge-neutro',
-    'Crítica': 'badge badge-perigo',
+    'Concluído':   'badge badge-sucesso',
+    'Planejado':   'badge badge-neutro',
   };
   return <span className={mapa[status] || 'badge badge-neutro'}>{status}</span>;
 }
@@ -19,16 +26,17 @@ function BarraProgresso({ valor }) {
   );
 }
 
-const dadosQualidade = [97.2,98.1,97.8,98.5,98.2,99.0,98.7,99.1,98.9,99.3,98.8,99.2];
-const dadosGraficoQual = producaoMensal.map((m, i) => ({ ...m, taxa: dadosQualidade[i] }));
+const dadosGraficoQual = producaoMensal.map((m, i) => ({
+  ...m,
+  taxa: dadosQualidade[i]?.taxa ?? 98,
+}));
 
 export default function PainelInicial() {
-  const ordensAtivas = ordens.filter(o => o.status === 'Em Produção').length;
+  const ordensAtivas  = ordens.filter(o => statusOrdem(o) === 'Em Produção').length;
   const ordensRecentes = ordens.slice(0, 6);
 
   return (
     <div className="fade-entrada">
-      {/* Cabeçalho */}
       <div className="cabecalho-pagina">
         <div className="titulo-area">
           <h2 className="titulo-principal">Painel Inicial</h2>
@@ -74,14 +82,16 @@ export default function PainelInicial() {
         <div className="kpi kpi-indigo">
           <i className="fa-solid fa-plane-arrival kpi-icone-bg"></i>
           <div className="kpi-rotulo">Aeronaves Concluídas</div>
-          <div className="kpi-valor">12</div>
+          <div className="kpi-valor">
+            {ordens.filter(o => statusOrdem(o) === 'Concluído').length}
+          </div>
           <div className="kpi-sub">neste mês</div>
           <div className="kpi-tendencia alta">
             <i className="fa-solid fa-bullseye"></i> Meta: 14
           </div>
         </div>
       </div>
-
+      
       <div className="grade-graficos">
         <div className="cartao">
           <div className="cartao-cabecalho">
@@ -124,15 +134,13 @@ export default function PainelInicial() {
           </div>
         </div>
       </div>
-
+      
       <div className="cartao">
         <div className="cartao-cabecalho">
           <span className="cartao-titulo">
             <i className="fa-solid fa-clock-rotate-left"></i> Ordens Recentes
           </span>
-          <span>
-            <i className="fa-solid fa-arrow-right"></i> Ver todas
-          </span>
+          <span><i className="fa-solid fa-arrow-right"></i> Ver todas</span>
         </div>
         <div className="container-tabela">
           <table>
@@ -149,8 +157,8 @@ export default function PainelInicial() {
             <tbody>
               {ordensRecentes.map(ordem => (
                 <tr key={ordem.id}>
-                  <td><span className='num-ordem'>{ordem.id}</span></td>
-                  <td>{ordem.aeronave}</td>
+                  <td><span className="num-ordem">{ordem.id}</span></td>
+                  <td>{ordem.modelo}</td>
                   <td>{ordem.cliente}</td>
                   <td>
                     <div className="barra-progresso-container-inline">
@@ -159,7 +167,7 @@ export default function PainelInicial() {
                     </div>
                   </td>
                   <td>{ordem.entrega}</td>
-                  <td><BadgeStatus status={ordem.status} /></td>
+                  <td><BadgeStatus status={statusOrdem(ordem)} /></td>
                 </tr>
               ))}
             </tbody>
